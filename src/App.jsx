@@ -8,7 +8,7 @@ import Layout from "./Components/Layout";
 import Home from "./Components/Home";
 import NotFound from "./Components/NotFound";
 import Details from "./Components/Details";
-import { getPokemon } from "./api";
+import { getPokemon, getPokemonDetails } from "./api";
 
 const theme = createTheme({
   palette: {
@@ -25,7 +25,10 @@ function App() {
   useEffect(() => {
     const fetchPokemons = async () => {
       const pokemonsRes = await getPokemon();
-      dispatch(setPokemons(pokemonsRes));
+      const pokemonsDetails = await Promise.all(
+        pokemonsRes.map((pokemon) => getPokemonDetails(pokemon))
+      );
+      dispatch(setPokemons(pokemonsDetails));
     };
     fetchPokemons();
   }, []);

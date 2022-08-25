@@ -7,6 +7,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 
 const PokemonCard = ({pokemon}) => {
+  console.log("pok", pokemon)
   return (
     <Card
       sx={{
@@ -17,14 +18,17 @@ const PokemonCard = ({pokemon}) => {
     >
       <CardMedia
         component="img"
-        image="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/132.svg"
-        alt="random"
+        image={pokemon.sprites.other.dream_world.front_default}
+        alt={pokemon.name}
+        height="300"
       />
       <CardContent sx={{ flexGrow: 1 }}>
         <Typography gutterBottom variant="h5" component="h2">
           {pokemon.name.toUpperCase()}
         </Typography>
-        <Typography>Description Pokemon</Typography>
+        <Typography>
+          Experience: {pokemon.base_experience}
+        </Typography>
       </CardContent>
       <CardActions>
         <Button size="small" href="/pokemon">
