@@ -5,8 +5,10 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Search from "./Search";
 import PokemonList from "./PokemonList";
+import CircularProgress from "@mui/material/CircularProgress";
 
-const Home = ({pokemons}) => {
+const Home = ({ pokemons, loading }) => {
+  console.log("ol", loading);
   return (
     <main>
       <Box sx={{ bgcolor: "background.paper", pt: 8, pb: 6 }}>
@@ -40,7 +42,13 @@ const Home = ({pokemons}) => {
         </Container>
       </Box>
       <Container sx={{ py: 8 }} maxWidth="md">
-        <PokemonList pokemons={pokemons} />
+        {loading ? (
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <CircularProgress />
+          </div>
+        ) : (
+          <PokemonList pokemons={pokemons} />
+        )}
       </Container>
     </main>
   );

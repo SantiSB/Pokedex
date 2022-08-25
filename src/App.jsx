@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getPokemonsWithDetails } from "./actions";
+import { getPokemonsWithDetails, setLoading } from "./actions";
 import CssBaseline from "@mui/material/CssBaseline";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -20,12 +20,16 @@ const theme = createTheme({
 
 function App() {
   const pokemons = useSelector((state) => state.pokemons);
+  const loading = useSelector((state) => state.loading)
   const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchPokemons = async () => {
+      dispatch(setLoading(true));
       const pokemonsRes = await getPokemon();
-      dispatch(getPokemonsWithDetails(pokemonsRes));
+      await dispatch(getPokemonsWithDetails(pokemonsRes));
+      await dispatch(setLoading(false));
+      
     };
     fetchPokemons();
   }, []);
@@ -37,7 +41,7 @@ function App() {
         <BrowserRouter>
           <Layout>
             <Routes>
-              <Route path="/" element={<Home pokemons={pokemons} />} />
+              <Route path="/" element={<Home pokemons={pokemons} loading={loading}/>} />
               <Route path="/pokemon" element={<Details />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
