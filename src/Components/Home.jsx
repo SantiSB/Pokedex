@@ -27,7 +27,7 @@ const Home = () => {
             color="text.primary"
             gutterBottom
           >
-            Pokedex
+            Catch 'Em All!!
           </Typography>
           <Typography
             variant="h5"

@@ -17,7 +17,7 @@ const PokemonCard = () => {
     >
       <CardMedia
         component="img"
-        image="https://source.unsplash.com/random"
+        image="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/132.svg"
         alt="random"
       />
       <CardContent sx={{ flexGrow: 1 }}>
@@ -27,7 +27,9 @@ const PokemonCard = () => {
         <Typography>Description Pokemon</Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Details</Button>
+        <Button size="small" href="/pokemon">
+          Datails
+        </Button>
       </CardActions>
     </Card>
   );
