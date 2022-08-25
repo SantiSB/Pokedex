@@ -23,7 +23,7 @@ function NotFound() {
         <Typography variant="body2" color="text.secondary">
           <Link color="inherit" href="/">
             Home
-          </Link>{' '}
+          </Link>
         </Typography>
       </Container>
       
