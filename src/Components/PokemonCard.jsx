@@ -7,7 +7,6 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 
 const PokemonCard = ({pokemon}) => {
-  console.log("pok", pokemon)
   return (
     <Card
       sx={{

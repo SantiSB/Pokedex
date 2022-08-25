@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setPokemons } from "./actions";
+import { getPokemonsWithDetails } from "./actions";
 import CssBaseline from "@mui/material/CssBaseline";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -8,7 +8,7 @@ import Layout from "./Components/Layout";
 import Home from "./Components/Home";
 import NotFound from "./Components/NotFound";
 import Details from "./Components/Details";
-import { getPokemon, getPokemonDetails } from "./api";
+import { getPokemon } from "./api";
 
 const theme = createTheme({
   palette: {
@@ -25,10 +25,7 @@ function App() {
   useEffect(() => {
     const fetchPokemons = async () => {
       const pokemonsRes = await getPokemon();
-      const pokemonsDetails = await Promise.all(
-        pokemonsRes.map((pokemon) => getPokemonDetails(pokemon))
-      );
-      dispatch(setPokemons(pokemonsDetails));
+      dispatch(getPokemonsWithDetails(pokemonsRes));
     };
     fetchPokemons();
   }, []);
