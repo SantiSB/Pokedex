@@ -1,24 +1,15 @@
 import * as React from "react";
-import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import PokemonCard from "./PokemonCard";
 import Search from "./Search";
+import PokemonList from "./PokemonList";
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-
-const Home = () => {
+const Home = ({pokemons}) => {
   return (
     <main>
-      <Box
-        sx={{
-          bgcolor: "background.paper",
-          pt: 8,
-          pb: 6,
-        }}
-      >
+      <Box sx={{ bgcolor: "background.paper", pt: 8, pb: 6 }}>
         <Container>
           <Typography
             component="h1"
@@ -49,13 +40,7 @@ const Home = () => {
         </Container>
       </Box>
       <Container sx={{ py: 8 }} maxWidth="md">
-        <Grid container spacing={4}>
-          {cards.map((card) => (
-            <Grid item key={card} xs={12} sm={6} md={4}>
-              <PokemonCard />
-            </Grid>
-          ))}
-        </Grid>
+        <PokemonList pokemons={pokemons} />
       </Container>
     </main>
   );

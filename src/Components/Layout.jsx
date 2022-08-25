@@ -6,7 +6,7 @@ import Link from '@mui/material/Link';
 
 const Layout = ({ children }) => {
   return (
-    <React.Fragment>
+    <div >
       {/* Appbar */}
       <AppBar position="relative">
         <Toolbar>
@@ -19,7 +19,7 @@ const Layout = ({ children }) => {
       </AppBar>
       {/* Main */}
       {children}
-    </React.Fragment>
+    </div>
   );
 };
 

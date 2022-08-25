@@ -9,7 +9,7 @@ import pokeball from "../Utils/pokeball.ico";
 
 function Details() {
   return (
-    <Grid container component="main" sx={{ height: "100vh" }}>
+    <Grid container component="main" sx={{ height: "100vh"}}>
       <Grid item xs={false} sm={4} md={6}>
         <img
           src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg`}

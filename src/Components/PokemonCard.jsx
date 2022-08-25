@@ -6,7 +6,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 
-const PokemonCard = () => {
+const PokemonCard = ({pokemon}) => {
   return (
     <Card
       sx={{
@@ -22,7 +22,7 @@ const PokemonCard = () => {
       />
       <CardContent sx={{ flexGrow: 1 }}>
         <Typography gutterBottom variant="h5" component="h2">
-          Name Pokemon
+          {pokemon.name.toUpperCase()}
         </Typography>
         <Typography>Description Pokemon</Typography>
       </CardContent>
