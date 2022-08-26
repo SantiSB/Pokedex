@@ -51,9 +51,8 @@ function Details() {
                 sx={{ width: 100, height: 100, alignSelf: "center" }}
               />
 
-              <Typography align="center">
-                <h1>{pokemon.name.toUpperCase()}</h1>
-              </Typography>
+              <h1 style={{textAlign: "center"}}>{pokemon.name.toUpperCase()}</h1>
+              
               <Typography>
                 <b>Experience:</b> {pokemon.base_experience}
               </Typography>

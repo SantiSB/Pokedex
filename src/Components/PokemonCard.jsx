@@ -28,9 +28,9 @@ const PokemonCard = ({pokemon}) => {
       </CardContent>
 
       <CardActions>
-        <Button size="small">
-          <Link to={`/pokemon/${pokemon.id}`}>Details</Link>
-        </Button>
+        
+          <Link to={`/pokemon/${pokemon.id}`} style={{textDecoration: 'none'}} ><Button size="small" variant="contained">Details</Button></Link>
+        
       </CardActions>
       
     </Card>
