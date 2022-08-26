@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import pokeball from "../Utils/pokeball.ico";
@@ -9,13 +10,16 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import CircularProgress from "@mui/material/CircularProgress";
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 function Details() {
+  
   const { id } = useParams();
 
   const pokemon = useSelector((state) => state.pokemons).find(
     (pokemon) => pokemon.id === parseInt(id)
   );
+
 
   return (
     <Grid container>
@@ -50,8 +54,15 @@ function Details() {
                 src={pokeball}
                 sx={{ width: 100, height: 100, alignSelf: "center" }}
               />
+              
+              <div style={{display:"flex", justifyContent: "center", alignItems:"center"}}>
 
-              <h1 style={{textAlign: "center"}}>{pokemon.name.toUpperCase()}</h1>
+                <h1 style={{textAlign: "center"}}>
+                  {pokemon.name.toUpperCase()}
+                </h1>
+                { pokemon.favorite ? <FavoriteIcon color={"primary"} sx={{mx: 1}}/> : null }
+
+              </div>
               
               <Typography>
                 <b>Experience:</b> {pokemon.base_experience}
@@ -76,17 +87,13 @@ function Details() {
               </Typography>
 
               <Box component="form" noValidate sx={{ mt: 1 }}>
-                <Button
-                  type="submit"
-                  fullWidth
-                  variant="contained"
-                  sx={{ mt: 3, mb: 2 }}
-                >
-                  Add to Favorites
-                </Button>
-                <Button type="submit" fullWidth variant="outlined" href="/">
-                  Go back
-                </Button>
+                
+                <Link to={"/"} style={{textDecoration: 'none'}}> 
+                  <Button type="submit" fullWidth variant="outlined" >
+                    Go back
+                  </Button> 
+                </Link>
+                
               </Box>
               
             </Box>

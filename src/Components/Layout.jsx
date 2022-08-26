@@ -2,7 +2,7 @@ import React from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import Link from '@mui/material/Link';
+import { Link } from "react-router-dom";
 
 const Layout = ({ children }) => {
   return (
@@ -10,7 +10,7 @@ const Layout = ({ children }) => {
       <AppBar position="fixed">
         <Toolbar>
           <Typography variant="h6" color="inherit" noWrap>
-            <Link color="inherit" href="/" underline="none">
+            <Link to={"/"} style={{textDecoration: 'none', color: '#ffffff'}}>
               Pokedex
             </Link>
           </Typography>
