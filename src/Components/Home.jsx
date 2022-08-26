@@ -8,7 +8,6 @@ import PokemonList from "./PokemonList";
 import CircularProgress from "@mui/material/CircularProgress";
 
 const Home = ({ pokemons, loading }) => {
-  console.log("ol", loading);
   return (
     <main>
       <Box sx={{ bgcolor: "background.paper", pt: 8, pb: 6 }}>

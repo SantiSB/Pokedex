@@ -1,10 +1,20 @@
-import * as React from 'react';
+import React, {useCallback} from 'react';
+import { useDispatch } from "react-redux";
+import { setSearch } from "../actions";
 import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 
 function Search() {
+  const dispatch = useDispatch();
+
+  const handleSearch = useCallback((event)=>{
+    dispatch(setSearch(event.target.value));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+  
+
   return (
     <Paper
       component="form"
@@ -14,7 +24,7 @@ function Search() {
         sx={{ ml: 1, flex: 1 }}
         placeholder="Search Pokemons"
         inputProps={{ 'aria-label': 'search pokemons' }}
-        autoFocus
+        onChange={handleSearch}
       />
       <IconButton type="button" sx={{ p: '10px' }} aria-label="search">
         <SearchIcon />

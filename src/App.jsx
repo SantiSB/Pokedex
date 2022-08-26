@@ -29,9 +29,9 @@ function App() {
       const pokemonsRes = await getPokemon();
       await dispatch(getPokemonsWithDetails(pokemonsRes));
       await dispatch(setLoading(false));
-      
     };
     fetchPokemons();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

@@ -1,18 +1,22 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import Grid from "@mui/material/Grid";
 import PokemonCard from "./PokemonCard";
 
 const PokemonList = ({ pokemons }) => {
+  const search = useSelector((state) => state.search);
   return (
-
-      <Grid container spacing={4}>
-        {pokemons.map((pokemon) => (
+    <Grid container spacing={4}>
+      {pokemons
+        .filter((pokemon) => {
+          return pokemon.name.toLowerCase().includes(search.toLowerCase());
+        })
+        .map((pokemon) => (
           <Grid item xs={12} sm={6} md={4} key={pokemon.id}>
             <PokemonCard pokemon={pokemon} />
           </Grid>
         ))}
-      </Grid>
-
+    </Grid>
   );
 };
 
