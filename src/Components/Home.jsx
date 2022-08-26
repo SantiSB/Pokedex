@@ -1,17 +1,18 @@
-import * as React from "react";
+import React from "react";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
+import CircularProgress from "@mui/material/CircularProgress";
 import Search from "./Search";
 import PokemonList from "./PokemonList";
-import CircularProgress from "@mui/material/CircularProgress";
 
 const Home = ({ pokemons, loading }) => {
   return (
     <main>
-      <Box sx={{ bgcolor: "background.paper", pt: 8, pb: 6 }}>
+      <Box sx={{ bgcolor: "background.paper", pt: 12, pb: 6 }}>
         <Container>
+
           <Typography
             component="h1"
             variant="h2"
@@ -30,6 +31,7 @@ const Home = ({ pokemons, loading }) => {
             Find your favorite Pokemon, discover their characteristics and catch
             them
           </Typography>
+          
           <Stack
             sx={{ pt: 4 }}
             direction="row"
@@ -38,9 +40,11 @@ const Home = ({ pokemons, loading }) => {
           >
             <Search />
           </Stack>
+          
         </Container>
       </Box>
-      <Container sx={{ py: 8 }} maxWidth="md">
+
+      <Container >
         {loading ? (
           <div style={{ display: "flex", justifyContent: "center" }}>
             <CircularProgress />

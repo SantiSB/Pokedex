@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getPokemonsWithDetails, setLoading } from "./actions";
-import CssBaseline from "@mui/material/CssBaseline";
+import { getPokemon } from "./api";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import CssBaseline from "@mui/material/CssBaseline";
 import Layout from "./Components/Layout";
 import Home from "./Components/Home";
 import NotFound from "./Components/NotFound";
 import Details from "./Components/Details";
-import { getPokemon } from "./api";
 
 const theme = createTheme({
   palette: {
@@ -19,23 +19,29 @@ const theme = createTheme({
 });
 
 function App() {
+
   const pokemons = useSelector((state) => state.pokemons);
   const loading = useSelector((state) => state.loading);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchPokemons = async () => {
+
       dispatch(setLoading(true));
+
       const pokemonsRes = await getPokemon();
+      
       await dispatch(getPokemonsWithDetails(pokemonsRes));
       await dispatch(setLoading(false));
+
     };
     fetchPokemons();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-    <div style={{ overflow: "hidden" }}>
+    <div>
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <BrowserRouter>

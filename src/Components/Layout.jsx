@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
@@ -6,9 +6,8 @@ import Link from '@mui/material/Link';
 
 const Layout = ({ children }) => {
   return (
-    <div >
-      {/* Appbar */}
-      <AppBar position="relative">
+    <React.Fragment >
+      <AppBar position="fixed">
         <Toolbar>
           <Typography variant="h6" color="inherit" noWrap>
             <Link color="inherit" href="/" underline="none">
@@ -17,9 +16,10 @@ const Layout = ({ children }) => {
           </Typography>
         </Toolbar>
       </AppBar>
-      {/* Main */}
+
       {children}
-    </div>
+
+    </React.Fragment>
   );
 };
 

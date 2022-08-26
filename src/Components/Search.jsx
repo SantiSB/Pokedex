@@ -7,6 +7,7 @@ import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 
 function Search() {
+
   const dispatch = useDispatch();
 
   const handleSearch = useCallback((event)=>{
@@ -14,7 +15,6 @@ function Search() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   
-
   return (
     <Paper
       component="form"
