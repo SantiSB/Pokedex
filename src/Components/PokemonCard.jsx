@@ -5,6 +5,7 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
+import { Link } from "react-router-dom";
 
 const PokemonCard = ({pokemon}) => {
   return (
@@ -30,8 +31,8 @@ const PokemonCard = ({pokemon}) => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small" href="/pokemon">
-          Datails
+        <Button size="small">
+          <Link to={`/pokemon/${pokemon.id}`}>Details</Link>
         </Button>
       </CardActions>
     </Card>

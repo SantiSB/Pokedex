@@ -20,7 +20,7 @@ const theme = createTheme({
 
 function App() {
   const pokemons = useSelector((state) => state.pokemons);
-  const loading = useSelector((state) => state.loading)
+  const loading = useSelector((state) => state.loading);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -42,7 +42,7 @@ function App() {
           <Layout>
             <Routes>
               <Route path="/" element={<Home pokemons={pokemons} loading={loading}/>} />
-              <Route path="/pokemon" element={<Details />} />
+              <Route path="/pokemon/:id" element={<Details />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Layout>
