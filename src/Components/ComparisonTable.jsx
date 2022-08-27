@@ -1,63 +1,44 @@
-import React, {
-  useState,
-  useRef,
-  useEffect,
-  useMemo,
-  useCallback,
-} from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { AgGridReact } from "ag-grid-react"; // the AG Grid React Component
+import { AgGridReact } from "ag-grid-react";
 
-import "ag-grid-community/styles/ag-grid.css"; // Core grid CSS, always needed
-import "ag-grid-community/styles/ag-theme-material.css"; // Optional theme CSS
+import "ag-grid-community/styles/ag-grid.css";
+import "ag-grid-community/styles/ag-theme-material.css";
 
 const ComparisonTable = () => {
-    const pokemons = useSelector((state) => state.pokemons);
+  const pokemons = useSelector((state) => state.pokemons);
 
-  
-
-  const gridRef = useRef(); // Optional - for accessing Grid's API
-  const [rowData, setRowData] = useState(pokemons); // Set rowData to Array of Objects, one Object per Row
+  const gridRef = useRef();
+  const [rowData, setRowData] = useState([]);
 
   // Each Column Definition results in one Column.
-  const [columnDefs, setColumnDefs] = useState([
-    { field: "sprites.front_default", filter: true, headerName: 'Pokemon', type: 'image'},
-    { field: "name", filter: true, headerName: 'Name' },
-    { field: "base_experience", filter: true, headerName: 'Experience' },
-    { field: "height", filter: true, headerName: 'Height' },
-    { field: "weight", filter: true, headerName: 'Weight' },
-  ]);
+  const [columnDefs, setColumDefs] = useState([]);
 
-  // DefaultColDef sets props common to all Columns
-  const defaultColDef = useMemo(() => ({
-    sortable: true,
-  }));
-
-  // Example of consuming Grid Event
-  const cellClickedListener = useCallback((event) => {
-    console.log("cellClicked", event);
-  }, []);
-
-  // Example load data from sever
-//   useEffect(() => {
-//     fetch("https://www.ag-grid.com/example-assets/row-data.json")
-//       .then((result) => result.json())
-//       .then((rowData) => setRowData(rowData));
-//   }, []);
-
+  useEffect(() => {
+    setRowData(pokemons);
+    setColumDefs([
+      { field: "name", filter: true, headerName: "Pokemon" },
+      { field: "base_experience", filter: true, headerName: "Experience" },
+      { field: "height", filter: true, headerName: "Height" },
+      { field: "weight", filter: true, headerName: "Weight" },
+      { field: "abilities.length", filter: true, headerName: "Abilities" },
+      { field: "moves.length", filter: true, headerName: "Moves" },
+      { field: "types.length", filter: true, headerName: "Types" },
+    ]);
+  }, [pokemons]);
 
   return (
-    <div >
-      {/* On div wrapping Grid a) specify theme CSS Class Class and b) sets Grid size */}
-      <div className="ag-theme-material" style={{ width: "100%", height: "30rem", marginBottom:"10rem"}}>
+    <div>
+      <div
+        className="ag-theme-material"
+        style={{ width: "100%", height: "30rem", marginBottom: "10rem" }}
+      >
         <AgGridReact
-          ref={gridRef} // Ref for accessing Grid's API
-          rowData={rowData} // Row Data for Rows
-          columnDefs={columnDefs} // Column Defs for Columns
-          defaultColDef={defaultColDef} // Default Column Properties
-          animateRows={true} // Optional - set to 'true' to have rows animate when sorted
-          rowSelection="multiple" // Options - allows click selection of rows
-          onCellClicked={cellClickedListener} // Optional - registering for Grid Event
+          ref={gridRef}
+          rowData={rowData}
+          columnDefs={columnDefs}
+          animateRows={true}
+          rowSelection="multiple"
         />
       </div>
     </div>

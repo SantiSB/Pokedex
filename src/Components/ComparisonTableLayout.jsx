@@ -1,10 +1,7 @@
 import React from "react";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import Link from "@mui/material/Link";
 import ComparisonTable from "./ComparisonTable";
-import Button from "@mui/material/Button";
 
 function ComparisonTableLayout() {
   return (

@@ -9,7 +9,6 @@ import Layout from "./Components/Layout";
 import Home from "./Components/Home";
 import NotFound from "./Components/NotFound";
 import Details from "./Components/Details";
-import ComparisonTable from "./Components/ComparisonTable";
 import ComparisonTableLayout from "./Components/ComparisonTableLayout";
 
 const theme = createTheme({
@@ -50,7 +49,7 @@ function App() {
           <Layout>
             <Routes>
               <Route path="/pokemon/:id" element={<Details />} />
-              <Route path="/compare" element={<ComparisonTableLayout />} />
+              <Route path="/compare" element={<ComparisonTableLayout pokemons={pokemons}/>} />
               <Route path="/" element={<Home pokemons={pokemons} loading={loading}/>} />
               <Route path="*" element={<NotFound />} />
             </Routes>

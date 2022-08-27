@@ -8,10 +8,16 @@ const Layout = ({ children }) => {
   return (
     <React.Fragment >
       <AppBar position="fixed">
-        <Toolbar>
+        <Toolbar sx={{display: "flex", justifyContent:"space-between"}}>
+          
           <Typography variant="h6" color="inherit" noWrap>
-            <Link to={"/"} style={{textDecoration: 'none', color: '#ffffff'}}>
+            <Link to={"/"} style={{textDecoration: 'none', color: '#ffffff', fontWeight:"bolder"}}>
               Pokedex
+            </Link>
+          </Typography>
+          <Typography variant="h6" color="inherit" noWrap>
+            <Link to={"/compare"} style={{textDecoration: 'none', color: '#ffffff'}}>
+              Compare
             </Link>
           </Typography>
         </Toolbar>
