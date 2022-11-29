@@ -48,9 +48,9 @@ function App() {
         <BrowserRouter>
           <Layout>
             <Routes>
+              <Route path="/" element={<Home pokemons={pokemons} loading={loading}/>} />
               <Route path="/pokemon/:id" element={<Details />} />
               <Route path="/compare" element={<ComparisonTableLayout pokemons={pokemons}/>} />
-              <Route path="/pokedex" element={<Home pokemons={pokemons} loading={loading}/>} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Layout>
