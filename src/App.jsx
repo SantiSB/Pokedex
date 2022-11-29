@@ -50,7 +50,7 @@ function App() {
             <Routes>
               <Route path="/pokemon/:id" element={<Details />} />
               <Route path="/compare" element={<ComparisonTableLayout pokemons={pokemons}/>} />
-              <Route path="/" element={<Home pokemons={pokemons} loading={loading}/>} />
+              <Route path="/pokedex" element={<Home pokemons={pokemons} loading={loading}/>} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Layout>
