@@ -48,7 +48,7 @@ function App() {
         <BrowserRouter>
           <Layout>
             <Routes>
-              <Route path="/" element={<Home pokemons={pokemons} loading={loading}/>} />
+              <Route excact path="/" element={<Home pokemons={pokemons} loading={loading}/>} />
               <Route path="/pokemon/:id" element={<Details />} />
               <Route path="/compare" element={<ComparisonTableLayout pokemons={pokemons}/>} />
               <Route path="*" element={<NotFound />} />
