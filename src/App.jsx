@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getPokemonsWithDetails, setLoading } from "./actions";
 import { getPokemon } from "./api";
@@ -45,7 +45,7 @@ function App() {
     <div>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <BrowserRouter>
+        <HashRouter>
           <Layout>
             <Routes>
               <Route excact path="/" element={<Home pokemons={pokemons} loading={loading}/>} />
@@ -54,7 +54,7 @@ function App() {
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Layout>
-        </BrowserRouter>
+        </HashRouter>
       </ThemeProvider>
     </div>
   );
